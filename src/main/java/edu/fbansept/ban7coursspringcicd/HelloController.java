@@ -12,9 +12,12 @@ public class HelloController {
     @Value("${jwt.secret}")
     private String jwtSecret;
 
+    @Value("${environment}")
+    private String environment;
+
     @GetMapping("/")
     public String hello() {
-        return "Hello " + jwtSecret;
+        return "Hello secret : '" + jwtSecret + "' from '" + environment + "' environment";
     }
 
 }

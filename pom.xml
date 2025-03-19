@@ -48,6 +48,27 @@
         </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <environment>DEV</environment>
+                <jwt.secret>SECRET-DEV</jwt.secret>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>prod</id>
+            <properties>
+                <jwt.secret>PROD</jwt.secret>
+                <jwt.secret>Va_être_remplacé</jwt.secret>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <finalName>${final.jar.name}</finalName>
         <plugins>
