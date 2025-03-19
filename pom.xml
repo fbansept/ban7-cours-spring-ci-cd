@@ -10,7 +10,7 @@
     </parent>
     <groupId>edu.fbansept</groupId>
     <artifactId>ban7-cours-spring-ci-cd</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2</version>
     <name>ban7-cours-spring-ci-cd</name>
     <description>Application Proof of Concept d'une intégration continue</description>
     <url/>
