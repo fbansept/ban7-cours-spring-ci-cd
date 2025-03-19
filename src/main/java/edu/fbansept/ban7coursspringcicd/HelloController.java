@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 @CrossOrigin
 public class HelloController {
@@ -15,9 +17,16 @@ public class HelloController {
     @Value("${environment.name}")
     private String environment;
 
+    @Value("${upload.folder}")
+    private String uploadFolder;
+
     @GetMapping("/")
-    public String hello() {
-        return "Hello secret : '" + jwtSecret + "' from '" + environment + "' environment";
+    public Map<String,Object> hello() {
+
+        return Map.of(
+                "Secret : " , jwtSecret , //remplacé par github action
+                "Environment : ", environment, //remplacé par la variable ENVIRONMENT du fichier .env
+                "Upload folder : " , uploadFolder); //remplacé par la variable UPLOAD_FOLDER du fichier .local.env
     }
 
 }
