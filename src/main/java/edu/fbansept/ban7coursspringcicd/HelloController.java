@@ -12,7 +12,7 @@ public class HelloController {
     @Value("${jwt.secret}")
     private String jwtSecret;
 
-    @Value("${environment}")
+    @Value("${environment.name}")
     private String environment;
 
     @GetMapping("/")
