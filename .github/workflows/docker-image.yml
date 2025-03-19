@@ -3,7 +3,7 @@ name: Build and Push Docker Image
 on:
   push:
     branches:
-      - master  # Déclencher le workflow sur les pushes vers la branche main
+      - master  # Déclencher le workflow sur les pushes vers la branche master
 
 jobs:
   build:
@@ -14,7 +14,11 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Load .env file
-        run: set -a && source .env && set +a
+        run: |
+          set -a
+          source .env
+          set +a
+          echo "APP_NAME=${APP_NAME}" >> $GITHUB_ENV
 
       - name: Set up JDK 17
         uses: actions/setup-java@v2
@@ -37,5 +41,5 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/${APP_NAME}:${{ env.VERSION }} .
-          docker push ${{ secrets.DOCKER_USERNAME }}/${APP_NAME}:${{ env.VERSION }}
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ env.APP_NAME }}:${{ env.VERSION }} .
+          docker push ${{ secrets.DOCKER_USERNAME }}/${{ env.APP_NAME }}:${{ env.VERSION }}
