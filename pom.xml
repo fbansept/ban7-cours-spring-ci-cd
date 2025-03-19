@@ -63,7 +63,7 @@
         <profile>
             <id>prod</id>
             <properties>
-                <jwt.secret>PROD</jwt.secret>
+                <environment>PROD</environment>
                 <jwt.secret>Va_être_remplacé</jwt.secret>
             </properties>
         </profile>
