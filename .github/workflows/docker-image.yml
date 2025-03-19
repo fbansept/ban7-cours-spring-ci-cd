@@ -3,7 +3,7 @@ name: Build and Push Docker Image
 on:
   push:
     branches:
-      - main  # Déclencher le workflow sur les pushes vers la branche main
+      - master  # Déclencher le workflow sur les pushes vers la branche main
 
 jobs:
   build:
@@ -23,7 +23,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Build with Maven
-        run: ./mvnw clean package
+        run: mvn clean package
 
       - name: Extract version from pom.xml
         id: extract_version
